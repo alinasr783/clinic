@@ -56,6 +56,7 @@ function ServicesAndPricing() {
 
   return (
     <div
+      id="services"
       ref={sectionRef}
       className="bg-black text-white py-8 sm:py-12 md:py-16 px-3 sm:px-4 md:px-6">
       <div className="max-w-6xl mx-auto">

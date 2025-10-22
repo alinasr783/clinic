@@ -5,6 +5,10 @@
 @import "tailwindcss";
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Inter", "Roboto", system-ui, -apple-system, sans-serif;
   font-display: swap;
@@ -13,6 +17,7 @@ body {
 @theme {
   --color-dark-1: #000;
   --color-dark-2: #1b1b1b;
+  --color-dark-3: #121212;
 }
 
 @layer utilities {
@@ -29,5 +34,9 @@ body {
   .font-roboto {
     font-family: "Roboto", "Inter", system-ui, -apple-system, sans-serif;
     font-display: swap;
+  }
+
+  .bg-gradient-radial {
+    background: radial-gradient(circle, var(--tw-gradient-stops));
   }
 }
