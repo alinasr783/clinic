@@ -6,12 +6,10 @@ const CircularCarousel = () => {
   const carouselRef = useRef(null);
   const [viewedCircles, setViewedCircles] = useState(new Set());
   const [canAdvance, setCanAdvance] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [isInCenter, setIsInCenter] = useState(false);
 
   const {scrollYProgress} = useScroll({
     target: containerRef,
-    offset: ["start start", "end start"],
+    offset: ["start end", "end start"],
   });
 
   const carouselItems = [
@@ -53,71 +51,30 @@ const CircularCarousel = () => {
   ];
 
   useEffect(() => {
-    // Intersection Observer to detect when carousel is in center of screen
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          // Check if the carousel is intersecting and is roughly in the center
-          const rect = entry.boundingClientRect;
-          const windowHeight = window.innerHeight;
-          const elementCenter = rect.top + rect.height / 2;
-          const screenCenter = windowHeight / 2;
-          
-          // Consider it "centered" if the element center is within 20% of screen center
-          const threshold = windowHeight * 0.2;
-          const isCentered = Math.abs(elementCenter - screenCenter) < threshold;
-          
-          setIsInCenter(entry.isIntersecting && isCentered);
-        });
-      },
-      {
-        threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0],
-        rootMargin: "-10% 0px -10% 0px"
-      }
-    );
-
-    if (carouselRef.current) {
-      observer.observe(carouselRef.current);
-    }
-
-    return () => {
-      if (carouselRef.current) {
-        observer.unobserve(carouselRef.current);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
     const unsubscribe = scrollYProgress.onChange((latest) => {
-      // Only update scroll progress when carousel is in center
-      if (isInCenter) {
-        setScrollProgress(latest);
+      const totalItems = carouselItems.length;
+      const currentIndex = Math.floor(latest * totalItems);
+      const clampedIndex = Math.max(0, Math.min(currentIndex, totalItems - 1));
 
-        const totalItems = carouselItems.length;
-        const currentIndex = Math.floor(latest * totalItems);
-        const clampedIndex = Math.max(0, Math.min(currentIndex, totalItems - 1));
+      setViewedCircles((prev) => {
+        const newSet = new Set(prev);
+        newSet.add(clampedIndex);
 
-        setViewedCircles((prev) => {
-          const newSet = new Set(prev);
-          newSet.add(clampedIndex);
+        if (newSet.size === totalItems) {
+          setCanAdvance(true);
+        }
 
-          if (newSet.size === totalItems) {
-            setCanAdvance(true);
-          }
-
-          return newSet;
-        });
-      }
+        return newSet;
+      });
     });
 
     return () => unsubscribe();
-  }, [scrollYProgress, carouselItems.length, isInCenter]);
+  }, [scrollYProgress, carouselItems.length]);
 
-  // Only apply transform when carousel is in center
   const x = useTransform(
     scrollYProgress,
     [0, 1],
-    isInCenter ? [0, -((carouselItems.length - 1) * 450)] : [0, 0]
+    [800, -((carouselItems.length - 1) * 400 - 200)]
   );
 
   const itemVariants = {
@@ -139,22 +96,17 @@ const CircularCarousel = () => {
       style={{
         height: "500vh",
       }}>
-      {/* <div
-        className="sticky top-0 h-screen bg-black text-white 
-        overflow-hidden flex items-center justify-center">
-
-      </div> */}
 
       <div
         ref={carouselRef}
-        className="sticky top-0 py-12 text-white 
-        overflow-hidden flex items-center justify-center">
-        <div className="w-full pt-8 md:pt-12">
+        className="sticky top-0 h-screen text-white 
+        overflow-hidden flex flex-col justify-center">
+        <div className="w-full">
           <motion.div
             initial="hidden"
             animate="visible"
             variants={itemVariants}
-            className="text-center mb-8 md:mb-12 relative">
+            className="text-center mb-16 relative -mt-32">
             <p className="text-xs text-gray-300 mb-2 uppercase tracking-wider">
               Service comes first
             </p>
@@ -169,10 +121,10 @@ const CircularCarousel = () => {
           </motion.div>
 
           <div
-            className="relative py-12
-            flex items-center justify-start overflow-hidden">
+            className="relative
+            flex items-center justify-center overflow-hidden">
             <motion.div
-              className="flex items-center space-x-16 lg:space-x-20 pl-8"
+              className="flex items-center space-x-12 lg:space-x-16"
               style={{x}}>
               {carouselItems.map((item, index) => {
                 return (
@@ -192,7 +144,7 @@ const CircularCarousel = () => {
                     viewport={{once: false, margin: "-20px"}}>
                     <div className="relative">
                       <motion.div
-                        className="relative w-80 h-80 lg:w-[400px] lg:h-[400px]"
+                        className="relative w-72 h-72 lg:w-[350px] lg:h-[350px]"
                         whileHover={{scale: 1.02}}
                         transition={{duration: 0.3}}>
                         <div className="absolute inset-0 rounded-full border border-gray-500/70"></div>

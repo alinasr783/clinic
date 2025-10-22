@@ -34,10 +34,10 @@ function Home() {
         <DoctorsSection />
       </div>
       <div className="mt-3 sm:mt-4 md:mt-6">
-        <AboutSection />
+        <CircularCarousel />
       </div>
       <div className="mt-3 sm:mt-4 md:mt-6">
-        <CircularCarousel />
+        <AboutSection />
       </div>
     </main>
   );
