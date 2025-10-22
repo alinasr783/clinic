@@ -34,7 +34,7 @@ const AboutSection = () => {
 
         <div className="text-center mb-12">
           <h2
-            className="text-3xl lg:text-4xl xl:text-4xl 
+            className="text-2xl lg:text-3xl xl:text-4xl 
             font-semibold leading-tight max-w-3xl mx-auto">
             Natura Smile Dental Clinic — a clinic created for people. Our
             mission — to help people become healthy, beautiful and happy
