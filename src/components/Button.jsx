@@ -1,3 +1,5 @@
+import {Link} from "react-router-dom";
+
 function Button({
   children,
   disabled,
@@ -20,26 +22,26 @@ function Button({
     primary: ` ${sizeStyles[size]} bg-white text-gray-800 
             rounded-full border border-transparent
               hover:bg-dark-2 hover:border-white hover:text-white 
-                transition-colors w-full
+                transition-colors w-auto min-w-[160px] sm:min-w-[180px] md:min-w-[200px]
               duration-300 cursor-pointer inline-block disabled:cursor-not-allowed 
-              disabled:opacity-50 ${className}`,
+              disabled:opacity-50 text-center ${className}`,
 
     secondary: ` ${sizeStyles[size]} bg-gray-100 border border-gray-300 text-gray-700 rounded-xl 
               hover:bg-gray-100 transition-colors 
               duration-300 cursor-pointer inline-block disabled:cursor-not-allowed 
-              disabled:opacity-50 ${className}`,
+              disabled:opacity-50  ${className}`,
 
     link: ` ${sizeStyles[size]} cursor-pointer underline 
     underline-offset-4 hover:no-underline ${className}`,
   };
 
-  //   if (to) {
-  //     return (
-  //       <Link to={to} className={baseStyles[variation]} disabled={disabled}>
-  //         {children}
-  //       </Link>
-  //     );
-  //   }
+  if (to) {
+    return (
+      <Link to={to} className={baseStyles[variation]} disabled={disabled}>
+        {children}
+      </Link>
+    );
+  }
 
   if (onClick) {
     return (

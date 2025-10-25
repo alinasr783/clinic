@@ -18,6 +18,9 @@ body {
   --color-dark-1: #000;
   --color-dark-2: #1b1b1b;
   --color-dark-3: #121212;
+  --color-light-1: #fff;
+  --color-light-2: #f8f8f8;
+  --color-light-3: #f3f3f3;
 }
 
 @layer utilities {
@@ -38,5 +41,10 @@ body {
 
   .bg-gradient-radial {
     background: radial-gradient(circle, var(--tw-gradient-stops));
+  }
+
+  .input {
+    @apply w-full px-4 py-3 bg-dark-3 border border-gray-600 rounded-lg 
+      text-white placeholder-gray-400 focus:outline-none focus:border-light-3 disabled:opacity-50 disabled:cursor-not-allowed;
   }
 }

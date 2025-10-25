@@ -3,6 +3,7 @@ import BonusProgram from "./BonusProgram";
 import CircularCarousel from "./CircularCarousel";
 import ConsultationSection from "./ConsultationSection";
 import DoctorsSection from "./DoctorsSection";
+import HealthAndBeautySection from "./HealthAndBeautySection";
 import Hero from "./Hero";
 import Info from "./Info";
 import MobileMenu from "./MobileMenu";
@@ -18,6 +19,7 @@ function Home() {
       <div className="mt-3 sm:mt-4 md:mt-6">
         <Info />
       </div>
+
       <div className="mt-3 sm:mt-4 md:mt-6">
         <ServicesAndPricing />
       </div>
@@ -34,10 +36,13 @@ function Home() {
         <DoctorsSection />
       </div>
       <div className="mt-3 sm:mt-4 md:mt-6">
+        <AboutSection />
+      </div>
+      <div className="mt-3 sm:mt-4 md:mt-6">
         <CircularCarousel />
       </div>
       <div className="mt-3 sm:mt-4 md:mt-6">
-        <AboutSection />
+        <HealthAndBeautySection />
       </div>
     </main>
   );

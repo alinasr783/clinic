@@ -23,7 +23,9 @@ const AboutSection = () => {
   ];
 
   return (
-    <section className="bg-black text-white py-16 sm:py-20 lg:py-24 font-roboto">
+    <section
+      className="bg-black text-white py-16 sm:py-20 lg:py-24 font-roboto"
+      id="about">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-4">
           <div className="flex flex-col items-center">

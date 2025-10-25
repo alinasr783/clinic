@@ -1,5 +1,6 @@
 import {motion as Motion} from "framer-motion";
 import {useState, useEffect} from "react";
+import Button from "./Button";
 
 function HeroContent() {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -89,10 +90,7 @@ function HeroContent() {
         animate={startAnimation ? "show" : "hidden"}
         className="absolute bottom-1 left-0 right-0 text-gray-300"
         style={{willChange: "transform, opacity"}}>
-        <p className="text-xs md:text-sm">October Field, Panfilovskaya</p>
-        <p className="text-xs md:text-sm">
-          Marshal Rybalko St. 2 Bldg 9 Office 229
-        </p>
+        <Button to="/cost">Schedule an Appointment</Button>
       </Motion.div>
     </div>
   );
