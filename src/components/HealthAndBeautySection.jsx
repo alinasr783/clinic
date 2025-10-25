@@ -40,7 +40,7 @@ const HealthAndBeautySection = () => {
   return (
     <section
       className="bg-black text-white py-16 sm:py-20 lg:py-24 font-roboto"
-      id="works">
+      id="clinic-photos">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 sm:mb-16">
           <div className="flex flex-col items-center">

@@ -1,12 +1,16 @@
 import AboutSection from "./AboutSection";
+import BackToTopButton from "./BackToTopButton";
 import BonusProgram from "./BonusProgram";
 import CircularCarousel from "./CircularCarousel";
 import ConsultationSection from "./ConsultationSection";
+import ContactSection from "./ContactSection";
 import DoctorsSection from "./DoctorsSection";
+import Footer from "./Footer";
 import HealthAndBeautySection from "./HealthAndBeautySection";
 import Hero from "./Hero";
 import Info from "./Info";
 import MobileMenu from "./MobileMenu";
+import QASection from "./QASection";
 import ServicesAndPricing from "./ServicesAndPricing";
 import TestimonialVideos from "./TestimonialVideos";
 
@@ -44,6 +48,17 @@ function Home() {
       <div className="mt-3 sm:mt-4 md:mt-6">
         <HealthAndBeautySection />
       </div>
+
+      <div className="mt-3 sm:mt-4 md:mt-6">
+        <QASection />
+      </div>
+
+      <div className="mt-3 sm:mt-4 md:mt-6">
+        <ContactSection />
+      </div>
+
+      <Footer />
+      <BackToTopButton />
     </main>
   );
 }

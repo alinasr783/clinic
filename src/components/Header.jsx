@@ -19,7 +19,7 @@ function Header() {
           items={[
             {href: "#services", label: "Services"},
             {href: "#about", label: "About Us"},
-            {href: "#works", label: "Gallery"},
+            {href: "#videos", label: "Videos"},
           ]}
           gapClass="gap-8"
         />

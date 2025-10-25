@@ -87,7 +87,7 @@ function BonusProgram() {
             Bonus Program
           </Motion.h2>
 
-          <Button variation="primary" size="medium">
+          <Button variation="primary" size="medium" to="/cost">
             Book an Appointment
           </Button>
         </div>

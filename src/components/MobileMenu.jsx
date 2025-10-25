@@ -23,7 +23,7 @@ function MobileMenu() {
 
   const menuItems = [
     {href: "#services", label: "Services"},
-    {href: "#gallery", label: "Gallery"},
+    {href: "#videos", label: "Videos"},
     {href: "#about", label: "About Us"},
     {href: "#reviews", label: "Reviews"},
     {href: "#doctors", label: "Doctors"},

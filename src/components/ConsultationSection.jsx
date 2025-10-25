@@ -151,8 +151,8 @@ function ConsultationSection() {
           </Motion.p>
 
           <Motion.div variants={itemVariants}>
-            <Button variation="primary" size="medium">
-              BOOK A CONSULTATION
+            <Button variation="primary" size="medium" to="/cost">
+              Book an Appointment
             </Button>
           </Motion.div>
         </div>

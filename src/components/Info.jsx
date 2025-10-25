@@ -78,8 +78,8 @@ function Info() {
             </p>
 
             <div className="flex justify-center w-full">
-              <Button variation="primary" size="medium">
-                Sign up for Consultation
+              <Button variation="primary" size="medium" to="/cost">
+                Book an Appointment
               </Button>
             </div>
           </div>

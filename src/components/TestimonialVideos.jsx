@@ -139,7 +139,7 @@ function TestimonialVideos() {
   return (
     <section
       ref={sectionRef}
-      className="bg-black text-white py-12 md:py-16 px-4 md:px-6">
+      className="bg-black text-white py-12 md:py-16 px-4 md:px-6" id="videos">
       <div className="max-w-7xl mx-auto">
         <motion.div
           variants={containerVariants}
