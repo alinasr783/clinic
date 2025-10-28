@@ -63,7 +63,7 @@ function CertificateSlider({certificates}) {
       )}
 
       {/* Custom styles */}
-      <style jsx>{`
+      <style>{`
         .certificate-slider .swiper-pagination {
           position: static !important;
         }

@@ -51,7 +51,8 @@ const CircularCarousel = () => {
   ];
 
   useEffect(() => {
-    const unsubscribe = scrollYProgress.onChange((latest) => {
+    // framer-motion v7+ recommends using value.on('change', callback)
+    const handle = (latest) => {
       const totalItems = carouselItems.length;
       const currentIndex = Math.floor(latest * totalItems);
       const clampedIndex = Math.max(0, Math.min(currentIndex, totalItems - 1));
@@ -66,9 +67,22 @@ const CircularCarousel = () => {
 
         return newSet;
       });
-    });
+    };
 
-    return () => unsubscribe();
+    // subscribe
+    const unsubscribe = scrollYProgress.on("change", handle);
+
+    return () => {
+      // unsubscribe accepts the handler in newer API
+      try {
+        unsubscribe();
+      } catch (e) {
+        // fallback: if unsubscribe isn't a function, try off
+        if (scrollYProgress && typeof scrollYProgress.off === "function") {
+          scrollYProgress.off("change", handle);
+        }
+      }
+    };
   }, [scrollYProgress, carouselItems.length]);
 
   const x = useTransform(

@@ -46,7 +46,7 @@ const AboutSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           <div className="grid grid-cols-2 gap-6 md:max-w-[450px]">
             {counter.map((item) => (
-              <div className="text-left">
+              <div key={item.id} className="text-left">
                 <div className="text-3xl lg:text-4xl font-semibold mb-2">
                   {item.count}
                 </div>

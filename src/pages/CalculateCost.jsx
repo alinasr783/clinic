@@ -11,7 +11,7 @@ function CalculateCost() {
         subtitle="Plan your trip and treatment with our cost estimator."
       />
 
-      <CostForm />
+  <CostForm />
     </div>
   );
 }

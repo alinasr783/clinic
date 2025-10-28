@@ -277,7 +277,7 @@ function TestimonialVideos() {
       </AnimatePresence>
 
       {/* custom styles */}
-      <style jsx>{`
+      <style>{`
         .testimonial-swiper .swiper-pagination {
           position: static !important;
           margin-top: 2rem;
